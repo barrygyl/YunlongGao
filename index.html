@@ -13,8 +13,8 @@
       font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-      color: #222;
+      background: #181c24;
+      color: #e0e6ed;
       line-height: 1.8;
       min-height: 100vh;
       font-size: 1.08rem;
@@ -65,7 +65,7 @@
       color: #fff;
     }
     .name-highlight {
-      color: #1abc9c;
+      color: #ffb347;
       font-weight: 700;
       letter-spacing: 0.08em;
       font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', Arial, sans-serif;
@@ -73,9 +73,11 @@
     h1 {
       margin: 0 0 0.5rem 0;
       font-size: 2.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      line-height: 1.08;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', Arial, sans-serif;
+      color: #fff;
     }
     .header-divider {
       width: 60px;
@@ -100,9 +102,9 @@
       gap: 2.5rem;
     }
     section {
-      background: linear-gradient(120deg, #fff 80%, #f7fafd 100%);
+      background: #262d38;
       border-radius: 28px;
-      box-shadow: 0 4px 32px rgba(44,62,80,0.10);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.18);
       padding: 2.1rem 2.2rem 1.7rem 2.2rem;
       transition: box-shadow 0.2s, transform 0.2s;
       margin-bottom: 0;
@@ -113,7 +115,7 @@
       transform: translateY(-2px) scale(1.012);
     }
     h2 {
-      color: #2c3e50;
+      color: #fff;
       font-size: 1.35rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -123,6 +125,7 @@
       position: relative;
       display: flex;
       align-items: center;
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', Arial, sans-serif;
     }
     h2::before {
       content: '';
@@ -147,6 +150,10 @@
       position: relative;
       padding-left: 1.8em;
       margin-bottom: 0.5em;
+      font-size: 1.08rem;
+      font-weight: 430;
+      letter-spacing: 0.01em;
+      color: #e0e6ed;
     }
     ul li::before {
       content: "";
@@ -180,7 +187,7 @@
       display: inline-block;
       padding: 0.6rem 1.5rem;
       border-radius: 24px;
-      background: linear-gradient(90deg, #1abc9c 0%, #3498db 100%);
+      background: linear-gradient(90deg, #283e51 0%, #485563 100%);
       color: #fff;
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(52,152,219,0.10);
@@ -194,7 +201,7 @@
       outline: none;
     }
     .contact-btn:hover {
-      background: linear-gradient(90deg, #3498db 0%, #1abc9c 100%);
+      background: linear-gradient(90deg, #485563 0%, #283e51 100%);
       box-shadow: 0 6px 18px rgba(52,152,219,0.18);
       color: #fff;
       transform: translateY(-2px) scale(1.04);
@@ -203,12 +210,16 @@
     ul.publication-list {
       font-size: 1.04rem;
       line-height: 1.85;
-      color: #222;
+      color: #e0e6ed;
       padding-left: 0.5rem;
     }
     ul.publication-list li {
       margin-bottom: 0.7em;
       padding-left: 2.2em;
+      font-size: 1.04rem;
+      font-weight: 430;
+      letter-spacing: 0.01em;
+      color: #e0e6ed;
     }
     ul.publication-list li::before {
       content: counter(pub) ".";
@@ -233,17 +244,17 @@
     }
     ul.publication-list strong {
       font-weight: 700;
-      color: #2c3e50;
+      color: #fff;
       font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', Arial, sans-serif;
     }
     ul.publication-list em {
       font-style: italic;
-      color: #217dbb;
+      color: #6a82fb;
       font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', 'Source Han Sans SC', 'Noto Sans SC', Arial, sans-serif;
     }
     /* 普通分段列表点为蓝紫渐变 */
     section ul:not(.publication-list) li {
-      color: #222;
+      color: #e0e6ed;
       background: none;
       -webkit-background-clip: initial;
       -webkit-text-fill-color: initial;
@@ -259,7 +270,7 @@
       position: absolute;
       left: 0.2em;
       top: 0.6em;
-      box-shadow: 0 1px 4px #e0eafc;
+      box-shadow: 0 1px 4px #232a34;
     }
     /* 论文列表序号依然为蓝紫渐变数字 */
     @media (max-width: 900px) {
@@ -275,6 +286,8 @@
         font-size: 1.08rem;
         padding-left: 1.1em;
       }
+      h1 { font-size: 1.7rem; }
+      section, ul, ul li, ul.publication-list, ul.publication-list li { font-size: 0.98rem; }
     }
     @media (max-width: 600px) {
       header {
@@ -292,13 +305,8 @@
         font-size: 0.95rem;
         padding: 0.18rem 0.7rem;
       }
-      h1 {
-        font-size: 1.3rem;
-      }
-      .header-divider {
-        width: 36px;
-        height: 3px;
-      }
+      h1 { font-size: 1.3rem; }
+      .header-divider { width: 36px; height: 3px; }
       main {
         padding: 0.5rem 0.1rem 0.5rem 0.1rem;
         margin-top: -30px;
@@ -308,10 +316,7 @@
         padding: 0.7rem 0.3rem 0.5rem 0.3rem;
         border-radius: 10px;
       }
-      h2 {
-        font-size: 0.98rem;
-        padding-left: 0.9em;
-      }
+      h2 { font-size: 0.98rem; padding-left: 0.9em; }
     }
     /* 美化邮箱弹窗 */
     .email-popup {
@@ -320,9 +325,9 @@
       gap: 0.8em;
       margin-top: 0.7em;
       padding: 0.7em 1.2em 0.7em 1em;
-      background: linear-gradient(90deg, #e0fcff 0%, #f5fafd 60%, #e0eafc 100%);
+      background: #232a34;
       border-radius: 18px;
-      box-shadow: 0 4px 18px rgba(44,62,80,0.10);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
       color: #1abc9c;
       font-weight: 600;
       font-size: 1.08rem;
@@ -355,7 +360,7 @@
       font-weight: 500;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
-      box-shadow: 0 1px 4px #e0eafc;
+      box-shadow: 0 1px 4px #232a34;
     }
     .copy-btn.copied {
       background: linear-gradient(90deg, #1abc9c 0%, #43e97b 100%);
@@ -381,8 +386,8 @@
   <main>
     <section>
       <h2>
-        <span class="lang-zh">关于我</span>
-        <span class="lang-en" style="display:none;">About Me</span>
+        <strong><span class="lang-zh">关于我</span></strong>
+        <strong><span class="lang-en" style="display:none;">About Me</span></strong>
       </h2>
       <p class="lang-zh">我本科毕业于南方医科大学，硕士毕业于深圳大学人工智能专业，现为中科院深圳先进技术研究院博士研究生。研究方向涵盖医学图像处理、视觉语言模型、异常检测、图像重建等，在医学人工智能领域具有多项科研成果。</p>
       <p class="lang-en" style="display:none;">I received my B.E. from Southern Medical University and M.S. in Artificial Intelligence from Shenzhen University. Currently, I am a Ph.D. candidate at SIAT, Chinese Academy of Sciences. My research interests include medical image processing, vision-language models, anomaly detection, and image reconstruction, with several achievements in the field of medical AI.</p>
@@ -390,8 +395,8 @@
 
     <section>
       <h2>
-        <span class="lang-zh">教育背景</span>
-        <span class="lang-en" style="display:none;">Education</span>
+        <strong><span class="lang-zh">教育背景</span></strong>
+        <strong><span class="lang-en" style="display:none;">Education</span></strong>
       </h2>
       <ul class="lang-zh">
         <li>2025–至今：博士在读，中国科学院深圳先进技术研究院，生物医学工程专业</li>
@@ -407,8 +412,8 @@
 
     <section>
       <h2>
-        <span class="lang-zh">科研方向</span>
-        <span class="lang-en" style="display:none;">Research Interests</span>
+        <strong><span class="lang-zh">科研方向</span></strong>
+        <strong><span class="lang-en" style="display:none;">Research Interests</span></strong>
       </h2>
       <ul class="lang-zh">
         <li>医学图像异常检测与分割</li>
@@ -425,12 +430,12 @@
     </section>
 
     <section>
-      <h2>代表成果 Publications</h2>
+      <h2><strong>代表成果 Publications</strong></h2>
       <ul class="publication-list">
-        <li>W. Zhao, Z. Huang, S. Tang, W. Li, <span class="name-highlight">Y. Gao</span>, et al., "<em>MMCA-Net: A Multimodal Cross Attention Transformer Network for Nasopharyngeal Carcinoma Tumor Segmentation</em>," IEEE JBHI, vol. 28, no. 9, pp. 5447–5458, 2024. (IF: 6.8, TOP)</li>
         <li><span class="name-highlight">Y. Gao</span>, Z. Huang, Y. Wu, W. Li, et al., "<em>Dual-Prompt-Enhanced Multiorgan Segmentation Model for Total-Body PET Images</em>," IEEE TRPMS, 2025. (IF: 4.1)</li>
         <li><span class="name-highlight">Y. Gao</span>, X. Peng, "<em>Same-Radical Character Association Model in Text Classification</em>," IEEE TCE, vol. 70, no. 1, pp. 1000–1009, 2023. (IF: 10.9)</li>
         <li><span class="name-highlight">Y. Gao</span>, Z. Huang, X. Xie, W. Zhao, et al., "<em>Multistage Diffusion Model With Phase Error Correction for Fast PET Imaging</em>," IEEE JBHI, 2025. (IF: 6.8, TOP)</li>
+        <li>W. Zhao, Z. Huang, S. Tang, W. Li, <span class="name-highlight">Y. Gao</span>, et al., "<em>MMCA-Net: A Multimodal Cross Attention Transformer Network for Nasopharyngeal Carcinoma Tumor Segmentation</em>," IEEE JBHI, vol. 28, no. 9, pp. 5447–5458, 2024. (IF: 6.8, TOP)</li>
         <li>M. Wen, Y. Wu, Z. Huang, X. He, <span class="name-highlight">Y. Gao</span>, et al., "<em>Diffusion-Based Model for Parametric Ki Generation From Total-Body Dynamic PET of Short-Duration Scan</em>," IEEE TRPMS, 2025. (IF: 4.1)</li>
         <li>W. Li, Z. Huang, H. Tang, Y. Wu, <span class="name-highlight">Y. Gao</span>, et al., "<em>A Generative Whole-Brain Segmentation Model for Positron Emission Tomography Images</em>," EJNMMI Physics, vol. 12, no. 1, p. 15, 2025. (IF: 3.2)</li>
         <li>Q. Yang, W. Li, Z. Huang, Z. Chen, W. Zhao, <span class="name-highlight">Y. Gao</span>, et al., "<em>Bidirectional Dynamic Frame Prediction Network for Total-body [68Ga]Ga-PSMA-11 and [68Ga]Ga-FAPI-04 PET images</em>," EJNMMI Physics, vol. 11, no. 1, p. 92, 2025. (IF: 3.2)</li>
@@ -439,8 +444,8 @@
 
     <section>
       <h2>
-        <span class="lang-zh">技能特长</span>
-        <span class="lang-en" style="display:none;">Skills</span>
+        <strong><span class="lang-zh">技能特长</span></strong>
+        <strong><span class="lang-en" style="display:none;">Skills</span></strong>
       </h2>
       <ul class="lang-zh">
         <li>编程语言：Python, C</li>
@@ -458,8 +463,8 @@
 
     <section>
       <h2>
-        <span class="lang-zh">联系方式</span>
-        <span class="lang-en" style="display:none;">Contact</span>
+        <strong><span class="lang-zh">联系方式</span></strong>
+        <strong><span class="lang-en" style="display:none;">Contact</span></strong>
       </h2>
       <div class="contact-links lang-zh">
         <a class="contact-btn" href="#" onclick="showEmail(event, 'zh')">邮箱</a>
