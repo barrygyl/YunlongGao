@@ -366,9 +366,161 @@
       background: linear-gradient(90deg, #1abc9c 0%, #43e97b 100%);
       color: #fff;
     }
+    .side-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 170px;
+      background: #20232a;
+      box-shadow: 2px 0 16px rgba(0,0,0,0.13);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 100;
+      padding-top: 3.5rem;
+      transition: width 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+    }
+    .side-nav.collapsed {
+      width: 48px;
+      padding-top: 1.2rem;
+    }
+    .nav-toggle {
+      position: absolute;
+      top: 18px;
+      left: 12px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 110;
+    }
+    .nav-toggle-bar {
+      width: 22px;
+      height: 3px;
+      background: #e0e6ed;
+      margin: 2.5px 0;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .side-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .side-nav li {
+      margin: 1.2rem 0;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+    }
+    .side-nav a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      padding: 0.7rem 1.2rem 0.7rem 0.3rem;
+      color: #e0e6ed;
+      text-decoration: none;
+      font-size: 1.08rem;
+      border-radius: 8px 20px 20px 8px;
+      transition: background 0.2s, color 0.2s, padding 0.2s;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      min-height: 40px;
+      justify-content: flex-start;
+    }
+    .side-nav a:hover, .side-nav a.active {
+      background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+      color: #fff;
+    }
+    .side-nav.collapsed a:hover,
+    .side-nav.collapsed a.active {
+      margin-left: -1em;
+      position: relative;
+      z-index: 1;
+    }
+    .side-nav.collapsed .nav-icon {
+      position: relative;
+      left: 1em;
+      z-index: 2;
+    }
+    .nav-icon {
+      font-size: 1.25em;
+      margin-right: 0.6em;
+      margin-left: 0;
+      transition: margin 0.2s;
+    }
+    .nav-text {
+      transition: opacity 0.2s, width 0.2s;
+      white-space: nowrap;
+    }
+    .side-nav.collapsed .nav-text {
+      opacity: 0;
+      width: 0;
+      overflow: hidden;
+    }
+    .side-nav.collapsed a {
+      padding: 0.7rem 0.1rem 0.7rem 0.1rem;
+      justify-content: center;
+    }
+    .side-nav.collapsed .nav-icon {
+      margin-left: -2.3em;
+      margin-right: 0;
+    }
+    @media (max-width: 900px) {
+      .side-nav { display: none; }
+      main { margin-left: 0 !important; }
+    }
+    main {
+      margin-left: 190px;
+      transition: margin 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    .side-nav.collapsed ~ main {
+      margin-left: 58px;
+    }
+    .side-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .side-nav li::before {
+      display: none !important;
+      content: none !important;
+    }
   </style>
 </head>
 <body>
+  <nav class="side-nav" id="sideNav">
+    <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="展开/收起导航栏">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <ul class="nav-zh">
+      <li><a href="#about"><span class="nav-icon">🏠</span><span class="nav-text">关于我</span></a></li>
+      <li><a href="#edu"><span class="nav-icon">🎓</span><span class="nav-text">教育背景</span></a></li>
+      <li><a href="#research"><span class="nav-icon">🔬</span><span class="nav-text">科研方向</span></a></li>
+      <li><a href="#pubs"><span class="nav-icon">📄</span><span class="nav-text">代表成果</span></a></li>
+      <li><a href="#skills"><span class="nav-icon">💡</span><span class="nav-text">技能特长</span></a></li>
+      <li><a href="#contact"><span class="nav-icon">✉️</span><span class="nav-text">联系方式</span></a></li>
+    </ul>
+    <ul class="nav-en" style="display:none;">
+      <li><a href="#about"><span class="nav-icon">🏠</span><span class="nav-text">About</span></a></li>
+      <li><a href="#edu"><span class="nav-icon">🎓</span><span class="nav-text">Edu.</span></a></li>
+      <li><a href="#research"><span class="nav-icon">🔬</span><span class="nav-text">Research</span></a></li>
+      <li><a href="#pubs"><span class="nav-icon">📄</span><span class="nav-text">Pub.s</span></a></li>
+      <li><a href="#skills"><span class="nav-icon">💡</span><span class="nav-text">Skills</span></a></li>
+      <li><a href="#contact"><span class="nav-icon">✉️</span><span class="nav-text">Contact</span></a></li>
+    </ul>
+  </nav>
   <header>
     <button class="lang-switch" onclick="switchLang()" id="langBtn">EN</button>
     <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=MTplpHoAAAAJ" alt="avatar" class="avatar">
@@ -384,7 +536,7 @@
   </header>
 
   <main>
-    <section>
+    <section id="about">
       <h2>
         <strong><span class="lang-zh">关于我</span></strong>
         <strong><span class="lang-en" style="display:none;">About Me</span></strong>
@@ -393,7 +545,7 @@
       <p class="lang-en" style="display:none;">I received my B.E. from Southern Medical University and M.S. in Artificial Intelligence from Shenzhen University. Currently, I am a Ph.D. candidate at SIAT, Chinese Academy of Sciences. My research interests include medical image processing, vision-language models, anomaly detection, and image reconstruction, with several achievements in the field of medical AI.</p>
     </section>
 
-    <section>
+    <section id="edu">
       <h2>
         <strong><span class="lang-zh">教育背景</span></strong>
         <strong><span class="lang-en" style="display:none;">Education</span></strong>
@@ -410,7 +562,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="research">
       <h2>
         <strong><span class="lang-zh">科研方向</span></strong>
         <strong><span class="lang-en" style="display:none;">Research Interests</span></strong>
@@ -429,7 +581,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="pubs">
       <h2><strong>代表成果 Publications</strong></h2>
       <ul class="publication-list">
         <li><span class="name-highlight">Y. Gao</span>, Z. Huang, Y. Wu, W. Li, et al., "<em>Dual-Prompt-Enhanced Multiorgan Segmentation Model for Total-Body PET Images</em>," IEEE TRPMS, 2025. (IF: 4.1)</li>
@@ -442,7 +594,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="skills">
       <h2>
         <strong><span class="lang-zh">技能特长</span></strong>
         <strong><span class="lang-en" style="display:none;">Skills</span></strong>
@@ -461,7 +613,7 @@
       </ul>
     </section>
 
-    <section>
+    <section id="contact">
       <h2>
         <strong><span class="lang-zh">联系方式</span></strong>
         <strong><span class="lang-en" style="display:none;">Contact</span></strong>
@@ -506,6 +658,8 @@
       // 切换语言时隐藏邮箱弹窗
       document.getElementById('email-popup-zh').style.display = 'none';
       document.getElementById('email-popup-en').style.display = 'none';
+      document.querySelector('.side-nav .nav-zh').style.display = isZh ? '' : 'none';
+      document.querySelector('.side-nav .nav-en').style.display = isZh ? 'none' : '';
     }
     function showEmail(e, lang) {
       e.preventDefault();
@@ -522,6 +676,12 @@
           btn.classList.remove('copied');
         }, 1500);
       });
+    }
+    function toggleNav() {
+      const nav = document.getElementById('sideNav');
+      nav.classList.toggle('collapsed');
+      // 兼容 main 区自动 margin-left
+      document.querySelector('main').style.marginLeft = nav.classList.contains('collapsed') ? '58px' : '190px';
     }
   </script>
 </body>
