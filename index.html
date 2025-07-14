@@ -662,6 +662,108 @@
       display: none !important;
       content: none !important;
     }
+    .publication-list .pub-row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.7em;
+      position: relative;
+    }
+    .publication-list .pub-img-outer {
+      position: absolute;
+      left: -80px;
+      width: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .publication-list .pub-img {
+      width: 56px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 12px #0005;
+      background: #222;
+    }
+    .publication-list .pub-line-abs {
+      margin-left: 0;
+      min-width: 60px;
+      position: relative;
+      left: 0;
+      z-index: 1;
+    }
+    .publication-list .pub-content {
+      flex: 1;
+      margin-left: 60px;
+    }
+    @media (max-width: 700px) {
+      .publication-list .pub-img-outer, .publication-list .pub-img, .publication-list .pub-line-abs { display: none !important; }
+      .publication-list .pub-content { margin-left: 0; }
+    }
+    .side-pubs {
+      position: fixed;
+      top: 0;
+      width: 80px;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: none;
+    }
+    .side-pubs.left { left: 0; }
+    .side-pubs.right { right: 0; }
+    .side-pub-img {
+      width: 56px;
+      height: 72px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 12px #0005;
+      background: #222;
+      pointer-events: auto;
+      transition: transform 0.2s;
+      position: absolute;
+      left: 12px;
+    }
+    .side-pubs.right .side-pub-img { left: auto; right: 12px; }
+    .side-pub-img:hover {
+      transform: scale(1.08) rotate(-2deg);
+    }
+    #pubs-connect-lines {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 15;
+    }
+    @media (max-width: 1100px) {
+      .side-pubs, #pubs-connect-lines { display: none !important; }
+    }
+    .publication-list li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.2em;
+    }
+    .pub-img-static {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 2px 12px #0005;
+      background: #222;
+      margin-right: 18px;
+    }
+    @media (max-width: 700px) {
+      .pub-img-static {
+        max-width: 100px;
+      }
+    }
+    .pub-content {
+      flex: 1;
+    }
+    @media (max-width: 700px) {
+      .pub-img-static { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -715,7 +817,7 @@
     </p>
   </header>
 
-  <main>
+  <main id="mainContent" style="position:relative;">
     <section id="about">
       <h2>
         <strong><span class="lang-zh">关于我</span></strong>
@@ -764,13 +866,13 @@
     <section id="pubs">
       <h2><strong>代表成果 Publications</strong></h2>
       <ul class="publication-list">
-        <li><span class="name-highlight">Y. Gao</span>, Z. Huang, Y. Wu, W. Li, et al., "<em>Dual-Prompt-Enhanced Multiorgan Segmentation Model for Total-Body PET Images</em>," IEEE TRPMS, 2025. (IF: 4.1)</li>
-        <li><span class="name-highlight">Y. Gao</span>, X. Peng, "<em>Same-Radical Character Association Model in Text Classification</em>," IEEE TCE, vol. 70, no. 1, pp. 1000–1009, 2023. (IF: 10.9)</li>
-        <li><span class="name-highlight">Y. Gao</span>, Z. Huang, X. Xie, W. Zhao, et al., "<em>Multistage Diffusion Model With Phase Error Correction for Fast PET Imaging</em>," IEEE JBHI, 2025. (IF: 6.8, TOP)</li>
-        <li>W. Zhao, Z. Huang, S. Tang, W. Li, <span class="name-highlight">Y. Gao</span>, et al., "<em>MMCA-Net: A Multimodal Cross Attention Transformer Network for Nasopharyngeal Carcinoma Tumor Segmentation</em>," IEEE JBHI, vol. 28, no. 9, pp. 5447–5458, 2024. (IF: 6.8, TOP)</li>
-        <li>M. Wen, Y. Wu, Z. Huang, X. He, <span class="name-highlight">Y. Gao</span>, et al., "<em>Diffusion-Based Model for Parametric Ki Generation From Total-Body Dynamic PET of Short-Duration Scan</em>," IEEE TRPMS, 2025. (IF: 4.1)</li>
-        <li>W. Li, Z. Huang, H. Tang, Y. Wu, <span class="name-highlight">Y. Gao</span>, et al., "<em>A Generative Whole-Brain Segmentation Model for Positron Emission Tomography Images</em>," EJNMMI Physics, vol. 12, no. 1, p. 15, 2025. (IF: 3.2)</li>
-        <li>Q. Yang, W. Li, Z. Huang, Z. Chen, W. Zhao, <span class="name-highlight">Y. Gao</span>, et al., "<em>Bidirectional Dynamic Frame Prediction Network for Total-body [68Ga]Ga-PSMA-11 and [68Ga]Ga-FAPI-04 PET images</em>," EJNMMI Physics, vol. 11, no. 1, p. 92, 2025. (IF: 3.2)</li>
+        <li><img src="imgs/paper1.png" class="pub-img-static" alt="成果1"><span class="pub-content"><span class="name-highlight">Y. Gao</span>, Z. Huang, Y. Wu, W. Li, et al., "<em>Dual-Prompt-Enhanced Multiorgan Segmentation Model for Total-Body PET Images</em>," IEEE TRPMS, 2025. (IF: 4.1)</span></li>
+        <li><img src="imgs/paper2.png" class="pub-img-static" alt="成果2"><span class="pub-content"><span class="name-highlight">Y. Gao</span>, X. Peng, "<em>Same-Radical Character Association Model in Text Classification</em>," IEEE TCE, vol. 70, no. 1, pp. 1000–1009, 2023. (IF: 10.9)</span></li>
+        <li><img src="imgs/paper3.png" class="pub-img-static" alt="成果3"><span class="pub-content"><span class="name-highlight">Y. Gao</span>, Z. Huang, X. Xie, W. Zhao, et al., "<em>Multistage Diffusion Model With Phase Error Correction for Fast PET Imaging</em>," IEEE JBHI, 2025. (IF: 6.8, TOP)</span></li>
+        <li><img src="imgs/paper4.png" class="pub-img-static" alt="成果4"><span class="pub-content">W. Zhao, Z. Huang, S. Tang, W. Li, <span class="name-highlight">Y. Gao</span>, et al., "<em>MMCA-Net: A Multimodal Cross Attention Transformer Network for Nasopharyngeal Carcinoma Tumor Segmentation</em>," IEEE JBHI, vol. 28, no. 9, pp. 5447–5458, 2024. (IF: 6.8, TOP)</span></li>
+        <li><img src="imgs/paper5.png" class="pub-img-static" alt="成果5"><span class="pub-content">M. Wen, Y. Wu, Z. Huang, X. He, <span class="name-highlight">Y. Gao</span>, et al., "<em>Diffusion-Based Model for Parametric Ki Generation From Total-Body Dynamic PET of Short-Duration Scan</em>," IEEE TRPMS, 2025. (IF: 4.1)</span></li>
+        <li><img src="imgs/paper6.webp" class="pub-img-static" alt="成果6"><span class="pub-content">W. Li, Z. Huang, H. Tang, Y. Wu, <span class="name-highlight">Y. Gao</span>, et al., "<em>A Generative Whole-Brain Segmentation Model for Positron Emission Tomography Images</em>," EJNMMI Physics, vol. 12, no. 1, p. 15, 2025. (IF: 3.2)</span></li>
+        <li><img src="imgs/paper7.webp" class="pub-img-static" alt="成果7"><span class="pub-content">Q. Yang, W. Li, Z. Huang, Z. Chen, W. Zhao, <span class="name-highlight">Y. Gao</span>, et al., "<em>Bidirectional Dynamic Frame Prediction Network for Total-body [68Ga]Ga-PSMA-11 and [68Ga]Ga-FAPI-04 PET images</em>," EJNMMI Physics, vol. 11, no. 1, p. 92, 2025. (IF: 3.2)</span></li>
       </ul>
     </section>
 
@@ -887,6 +989,72 @@
         pullCord.style.opacity = 0;
       }
     });
+    // 一左一右交错排布代表成果图片并画线
+    function arrangeSidePubsAndLines() {
+      const pubList = document.querySelector('.publication-list');
+      if (!pubList) return;
+      const items = Array.from(pubList.querySelectorAll('li'));
+      const leftBox = document.querySelector('.side-pubs.left');
+      const rightBox = document.querySelector('.side-pubs.right');
+      const svg = document.getElementById('pubs-connect-lines');
+      if (!leftBox || !rightBox || !svg) return;
+      leftBox.innerHTML = '';
+      rightBox.innerHTML = '';
+      svg.innerHTML = '';
+      // 获取main和li的相对位置
+      const main = document.getElementById('mainContent');
+      const mainRect = main.getBoundingClientRect();
+      const scrollY = window.scrollY || document.documentElement.scrollTop;
+      // 计算图片和li的中心点
+      items.forEach((li, idx) => {
+        const liRect = li.getBoundingClientRect();
+        // 图片纵向居中对齐li
+        const imgY = liRect.top + liRect.height/2 + scrollY - 36; // 36=图片高度一半
+        const imgSrcs = [
+          'imgs/paper1.png',
+          'imgs/paper2.png',
+          'imgs/paper3.png',
+          'imgs/paper4.png',
+          'imgs/paper5.png',
+          'imgs/paper6.webp',
+          'imgs/paper7.webp'
+        ];
+        const imgSrc = imgSrcs[idx] || imgSrcs[0];
+        let img, x1, y1, x2, y2;
+        if (idx % 2 === 0) {
+          // 左侧
+          img = document.createElement('img');
+          img.src = imgSrc;
+          img.className = 'side-pub-img';
+          img.style.top = imgY + 'px';
+          img.setAttribute('alt', `成果${idx+1}`);
+          leftBox.appendChild(img);
+          x1 = 80; // 左侧图片右侧
+          y1 = imgY + 36;
+          x2 = mainRect.left + 24;
+          y2 = liRect.top + liRect.height/2 + scrollY;
+        } else {
+          // 右侧
+          img = document.createElement('img');
+          img.src = imgSrc;
+          img.className = 'side-pub-img';
+          img.style.top = imgY + 'px';
+          img.setAttribute('alt', `成果${idx+1}`);
+          rightBox.appendChild(img);
+          x1 = window.innerWidth - 80;
+          y1 = imgY + 36;
+          x2 = mainRect.right - 24;
+          y2 = liRect.top + liRect.height/2 + scrollY;
+        }
+        // 画线
+        svg.innerHTML += `<line x1='${x1}' y1='${y1}' x2='${x2}' y2='${y2}' stroke='url(#pubLineGradient)' stroke-width='3'/>`;
+      });
+      // 渐变定义
+      svg.innerHTML = `<defs><linearGradient id='pubLineGradient' x1='0' y1='0' x2='1' y2='0'><stop offset='0%' stop-color='#ff9800'/><stop offset='100%' stop-color='#a259ff'/></linearGradient></defs>` + svg.innerHTML;
+    }
+    window.onload = arrangeSidePubsAndLines;
+    window.addEventListener('resize', () => { setTimeout(arrangeSidePubsAndLines, 200); });
+    window.addEventListener('scroll', () => { setTimeout(arrangeSidePubsAndLines, 50); });
   </script>
 </body>
 </html> 
