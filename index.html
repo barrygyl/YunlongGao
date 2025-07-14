@@ -100,6 +100,8 @@
       display: flex;
       flex-direction: column;
       gap: 2.5rem;
+      /* 保证main水平居中 */
+      box-sizing: border-box;
     }
     section {
       background: #262d38;
@@ -479,11 +481,9 @@
       main { margin-left: 0 !important; }
     }
     main {
-      margin-left: 190px;
-      transition: margin 0.25s cubic-bezier(.4,2,.6,1);
-    }
-    .side-nav.collapsed ~ main {
-      margin-left: 58px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: none;
     }
     .side-nav ul {
       list-style: none;
@@ -495,14 +495,180 @@
       display: none !important;
       content: none !important;
     }
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 60px;
+      background: #20232a;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.13);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: height 0.25s cubic-bezier(.4,2,.6,1);
+    }
+    .top-nav.collapsed {
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
+      box-shadow: none;
+    }
+    .topnav-toggle {
+      position: absolute;
+      left: 18px;
+      top: 14px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 210;
+    }
+    .topnav-toggle-bar {
+      width: 22px;
+      height: 3px;
+      background: #e0e6ed;
+      margin: 2.5px 0;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+    .top-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .top-nav li {
+      margin: 0 0.2rem;
+      list-style: none;
+    }
+    .top-nav a {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1.1rem;
+      color: #e0e6ed;
+      text-decoration: none;
+      font-size: 1.08rem;
+      border-radius: 16px;
+      transition: background 0.2s, color 0.2s;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      min-height: 40px;
+    }
+    .top-nav a:hover, .top-nav a.active {
+      background: linear-gradient(90deg, #6a82fb 0%, #fc5c7d 100%);
+      color: #fff;
+    }
+    .top-nav .nav-icon {
+      font-size: 1.18em;
+      margin-right: 0.6em;
+    }
+    .top-nav .nav-text {
+      white-space: nowrap;
+    }
+    main {
+      margin-top: 80px;
+    }
+    @media (max-width: 900px) {
+      .top-nav ul { gap: 0.1rem; }
+      .top-nav a { padding: 0.5rem 0.5rem; font-size: 0.98rem; }
+      main { margin-top: 70px; }
+    }
+    .pull-cord {
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      width: 32px;
+      height: 44px;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      z-index: 220;
+      transition: opacity 0.2s;
+      padding: 0;
+      opacity: 0.85;
+    }
+    .pull-cord:hover svg {
+      filter: drop-shadow(0 2px 8px #ff9800cc) brightness(1.15);
+      transform: translateY(2px) scale(1.08);
+      transition: 0.2s;
+    }
+    .top-nav.collapsed {
+      height: 0;
+      min-height: 0;
+      overflow: hidden;
+      box-shadow: none;
+      /* 隐藏导航内容，仅显示拉绳按钮 */
+    }
+    .top-nav.collapsed ~ #pullCordBtn {
+      display: flex !important;
+    }
+    /* 拉绳按钮在收缩时显示，展开时隐藏 */
+    .pull-cord { display: none; }
+    .top-nav.collapsed + .pull-cord { display: flex !important; }
+    @media (max-width: 900px) {
+      .pull-cord { top: 6px; left: 8px; width: 28px; height: 38px; }
+    }
+    .pull-cord-fixed {
+      position: fixed;
+      top: 12px;
+      left: 18px;
+      width: 32px;
+      height: 44px;
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      z-index: 9999;
+      opacity: 0.88;
+      display: none;
+      transition: opacity 0.2s;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+    }
+    .pull-cord-fixed:hover svg {
+      filter: drop-shadow(0 2px 8px #ff9800cc) brightness(1.15);
+      transform: translateY(2px) scale(1.08);
+      transition: 0.2s;
+    }
+    @media (max-width: 900px) {
+      .pull-cord-fixed { top: 6px; left: 8px; width: 28px; height: 38px; }
+    }
+    /* 去除顶部导航栏前面的点 */
+    .top-nav .nav-icon {
+      margin-left: 0;
+    }
+    .top-nav .nav-text {
+      margin-left: 0;
+    }
+    .top-nav li::before {
+      display: none !important;
+      content: none !important;
+    }
   </style>
 </head>
 <body>
-  <nav class="side-nav" id="sideNav">
-    <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="展开/收起导航栏">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
+  <nav class="top-nav" id="topNav">
+    <button class="topnav-toggle" id="topnavToggle" onclick="toggleTopNav()" aria-label="展开/收起导航栏">
+      <span class="topnav-toggle-bar"></span>
+      <span class="topnav-toggle-bar"></span>
+      <span class="topnav-toggle-bar"></span>
     </button>
     <ul class="nav-zh">
       <li><a href="#about"><span class="nav-icon">🏠</span><span class="nav-text">关于我</span></a></li>
@@ -521,6 +687,19 @@
       <li><a href="#contact"><span class="nav-icon">✉️</span><span class="nav-text">Contact</span></a></li>
     </ul>
   </nav>
+  <!-- 固定在顶端的拉绳按钮，收缩时显示 -->
+  <button class="pull-cord-fixed" id="pullCordBtn" onclick="toggleTopNav()" aria-label="拉绳展开导航栏" style="display:none;">
+    <svg width="24" height="40" viewBox="0 0 24 40">
+      <rect x="11" y="0" width="2" height="28" fill="#e0e6ed"/>
+      <circle cx="12" cy="34" r="6" fill="url(#pullGradient)"/>
+      <defs>
+        <linearGradient id="pullGradient" x1="0" y1="28" x2="0" y2="40" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#ff9800"/>
+          <stop offset="1" stop-color="#a259ff"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  </button>
   <header>
     <button class="lang-switch" onclick="switchLang()" id="langBtn">EN</button>
     <img src="https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=MTplpHoAAAAJ" alt="avatar" class="avatar">
@@ -658,8 +837,8 @@
       // 切换语言时隐藏邮箱弹窗
       document.getElementById('email-popup-zh').style.display = 'none';
       document.getElementById('email-popup-en').style.display = 'none';
-      document.querySelector('.side-nav .nav-zh').style.display = isZh ? '' : 'none';
-      document.querySelector('.side-nav .nav-en').style.display = isZh ? 'none' : '';
+      document.querySelector('.top-nav .nav-zh').style.display = isZh ? '' : 'none';
+      document.querySelector('.top-nav .nav-en').style.display = isZh ? 'none' : '';
     }
     function showEmail(e, lang) {
       e.preventDefault();
@@ -683,6 +862,30 @@
       // 兼容 main 区自动 margin-left
       document.querySelector('main').style.marginLeft = nav.classList.contains('collapsed') ? '58px' : '190px';
     }
+    function toggleTopNav() {
+      const nav = document.getElementById('topNav');
+      const pullCord = document.getElementById('pullCordBtn');
+      nav.classList.toggle('collapsed');
+      if(nav.classList.contains('collapsed')) {
+        pullCord.style.display = 'flex';
+        setTimeout(()=>{ pullCord.style.opacity = 1; }, 100);
+      } else {
+        pullCord.style.opacity = 0;
+        setTimeout(()=>{ pullCord.style.display = 'none'; }, 200);
+      }
+    }
+    // 页面加载时确保拉绳按钮状态正确
+    window.addEventListener('DOMContentLoaded', ()=>{
+      const nav = document.getElementById('topNav');
+      const pullCord = document.getElementById('pullCordBtn');
+      if(nav.classList.contains('collapsed')) {
+        pullCord.style.display = 'flex';
+        pullCord.style.opacity = 1;
+      } else {
+        pullCord.style.display = 'none';
+        pullCord.style.opacity = 0;
+      }
+    });
   </script>
 </body>
 </html> 
